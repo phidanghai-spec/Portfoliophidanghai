@@ -68,7 +68,7 @@ export const portfolioData = {
       category: "System Design & Backend",
       role: "Backend & System Design",
       image: "/images/projects/cineverse.png",
-      imageAlt: "CineVerse - Cinema booking system architecture diagram and ticket pricing screenshot",
+      imageAlt: "CineVerse - Cinema ticket booking interface and system management screenshot",
       techStack: ["C#", "Python", "SQLite", "12 GoF Patterns", "Unit Testing"],
       highlights: [
         "Implemented strict 3-Tier Layered Architecture: Presentation → Business Logic → Data Access.",
@@ -86,7 +86,7 @@ export const portfolioData = {
       category: "Automation QA Testing",
       role: "Automation QA Tester",
       image: "/images/projects/datvexe.png",
-      imageAlt: "DatVeXe - Bus booking automation test execution and test matrix report screenshot",
+      imageAlt: "DatVeXe - Selenium WebDriver test execution and NUnit test matrix screenshot",
       techStack: ["C#", "Selenium WebDriver", "Visual Studio", "NUnit"],
       highlights: [
         "Constructed exhaustive End-to-End (E2E) testing matrix for multi-route ticket booking.",
