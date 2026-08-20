@@ -9,50 +9,50 @@ type ViewMode = "architecture" | "patterns";
 
 const CATEGORY_COLORS: Record<string, { bg: string; border: string; text: string; dot: string }> = {
   Creational: {
-    bg: "bg-indigo-500/10",
-    border: "border-indigo-500/30",
-    text: "text-indigo-300",
-    dot: "bg-indigo-500",
+    bg: "bg-teal-950/40",
+    border: "border-teal-500/30",
+    text: "text-teal-300",
+    dot: "bg-teal-400",
   },
   Structural: {
-    bg: "bg-violet-500/10",
-    border: "border-violet-500/30",
-    text: "text-violet-300",
-    dot: "bg-violet-500",
+    bg: "bg-cyan-950/40",
+    border: "border-cyan-500/30",
+    text: "text-cyan-300",
+    dot: "bg-cyan-400",
   },
   Behavioral: {
-    bg: "bg-emerald-500/10",
+    bg: "bg-emerald-950/40",
     border: "border-emerald-500/30",
     text: "text-emerald-300",
-    dot: "bg-emerald-500",
+    dot: "bg-emerald-400",
   },
 };
 
-const TIER_COLORS = ["indigo", "violet", "emerald"] as const;
+const TIER_COLORS = ["teal", "cyan", "emerald"] as const;
 const TIER_STYLES = {
-  indigo: {
-    border: "border-indigo-500/40",
-    bg: "bg-indigo-500/10",
-    text: "text-indigo-400",
-    glow: "shadow-[0_0_24px_-4px_rgba(99,102,241,0.3)]",
-    connector: "bg-indigo-500/40",
-    dot: "bg-indigo-500",
+  teal: {
+    border: "border-teal-500/40",
+    bg: "bg-teal-950/30",
+    text: "text-teal-300",
+    glow: "shadow-[0_0_24px_-4px_rgba(45,212,191,0.25)]",
+    connector: "bg-teal-500/40",
+    dot: "bg-teal-400",
   },
-  violet: {
-    border: "border-violet-500/40",
-    bg: "bg-violet-500/10",
-    text: "text-violet-400",
-    glow: "shadow-[0_0_24px_-4px_rgba(139,92,246,0.3)]",
-    connector: "bg-violet-500/40",
-    dot: "bg-violet-500",
+  cyan: {
+    border: "border-cyan-500/40",
+    bg: "bg-cyan-950/30",
+    text: "text-cyan-300",
+    glow: "shadow-[0_0_24px_-4px_rgba(56,189,248,0.25)]",
+    connector: "bg-cyan-500/40",
+    dot: "bg-cyan-400",
   },
   emerald: {
     border: "border-emerald-500/40",
-    bg: "bg-emerald-500/10",
-    text: "text-emerald-400",
-    glow: "shadow-[0_0_24px_-4px_rgba(52,211,153,0.3)]",
+    bg: "bg-emerald-950/30",
+    text: "text-emerald-300",
+    glow: "shadow-[0_0_24px_-4px_rgba(52,211,153,0.25)]",
     connector: "bg-emerald-500/40",
-    dot: "bg-emerald-500",
+    dot: "bg-emerald-400",
   },
 };
 
@@ -211,40 +211,40 @@ export default function ArchitectureView() {
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
           className="flex flex-col gap-2 mb-10"
         >
-          <div className="flex items-center gap-2 text-xs font-mono text-neutral-500 uppercase tracking-widest">
+          <div className="flex items-center gap-2 text-xs font-mono text-teal-400 uppercase tracking-widest">
             <GitBranch size={13} />
-            <span>System Design</span>
+            <span>SYSTEM DESIGN // 3-TIER & 12 GoF PATTERNS</span>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-white">
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
                 Architecture Visualizer
               </h2>
-              <p className="mt-1 text-neutral-400 max-w-xl">
-                Khám phá kiến trúc 3 tầng và 12 GoF Design Patterns được triển khai trong CineVerse.
+              <p className="mt-1 text-slate-300 max-w-xl text-sm leading-relaxed">
+                Khám phá kiến trúc 3 tầng và 12 GoF Design Patterns được hiện thực trong CineVerse (Presentation &rarr; Business Logic &rarr; Data Access).
               </p>
             </div>
 
             {/* Toggle */}
-            <div className="flex items-center gap-1 p-1 rounded-xl border border-white/[0.06] bg-white/[0.02] w-fit shrink-0">
+            <div className="flex items-center gap-1 p-1 rounded-xl border border-slate-800 bg-slate-900/60 backdrop-blur-sm w-fit shrink-0">
               {(["architecture", "patterns"] as ViewMode[]).map((m) => (
                 <button
                   key={m}
                   onClick={() => setMode(m)}
-                  className={`relative flex items-center gap-1.5 px-4 py-2 text-sm rounded-lg transition-colors ${
-                    mode === m ? "text-white" : "text-neutral-500 hover:text-neutral-300"
+                  className={`relative flex items-center gap-1.5 px-4 py-2 text-xs font-mono rounded-lg transition-colors ${
+                    mode === m ? "text-teal-300 font-semibold" : "text-slate-400 hover:text-slate-200"
                   }`}
                 >
                   {mode === m && (
                     <motion.span
                       layoutId="modePill"
-                      className="absolute inset-0 rounded-lg bg-white/[0.08] border border-white/[0.12]"
+                      className="absolute inset-0 rounded-lg bg-teal-500/15 border border-teal-500/30"
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
                     />
                   )}

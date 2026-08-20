@@ -7,6 +7,7 @@ export interface StatItem {
 export interface Project {
   id: string;
   title: string;
+  subtitle?: string;
   category: "Fullstack E-Commerce" | "System Design & Backend" | "Automation QA Testing";
   role: string;
   techStack: string[];
@@ -14,6 +15,8 @@ export interface Project {
   metrics?: { label: string; value: string };
   githubUrl?: string;
   liveUrl?: string;
+  image?: string;
+  imageAlt?: string;
 }
 
 export interface SkillsMatrix {
@@ -46,6 +49,8 @@ export const portfolioData = {
       subtitle: "Graduation Project",
       category: "Fullstack E-Commerce",
       role: "Fullstack Intern",
+      image: "/images/projects/techstore.png",
+      imageAlt: "TechStore - Fullstack E-Commerce admin dashboard and storefront screenshot",
       techStack: ["Next.js", "ASP.NET Core", "Node.js", "Prisma ORM", "TiDB Cloud", "Socket.io"],
       highlights: [
         "Architected 50+ RESTful APIs handling real-time order processing and role-based JWT auth.",
@@ -62,6 +67,8 @@ export const portfolioData = {
       subtitle: "Design Patterns Course",
       category: "System Design & Backend",
       role: "Backend & System Design",
+      image: "/images/projects/cineverse.png",
+      imageAlt: "CineVerse - Cinema booking system architecture diagram and ticket pricing screenshot",
       techStack: ["C#", "Python", "SQLite", "12 GoF Patterns", "Unit Testing"],
       highlights: [
         "Implemented strict 3-Tier Layered Architecture: Presentation → Business Logic → Data Access.",
@@ -78,6 +85,8 @@ export const portfolioData = {
       subtitle: "Software Quality Assurance",
       category: "Automation QA Testing",
       role: "Automation QA Tester",
+      image: "/images/projects/datvexe.png",
+      imageAlt: "DatVeXe - Bus booking automation test execution and test matrix report screenshot",
       techStack: ["C#", "Selenium WebDriver", "Visual Studio", "NUnit"],
       highlights: [
         "Constructed exhaustive End-to-End (E2E) testing matrix for multi-route ticket booking.",
