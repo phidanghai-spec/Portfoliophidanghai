@@ -114,7 +114,7 @@ export default function SkillsMatrix() {
                       <div className="flex items-center gap-2 mb-4 pb-2 border-b border-white/[0.06]">
                         <div className={`w-2 h-2 rounded-full ${colors.dot}`} />
                         <span className={`text-xs font-mono font-semibold uppercase tracking-wider ${colors.text}`}>
-                          {cat}
+                          {cat} ({skills.length} techs)
                         </span>
                       </div>
                       <div className="flex flex-col gap-2">
@@ -129,7 +129,6 @@ export default function SkillsMatrix() {
                             `}
                           >
                             <span>{skill}</span>
-                            <span className="text-[10px] text-slate-400 opacity-60 font-mono">v1.0</span>
                           </div>
                         ))}
                       </div>
