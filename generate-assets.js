@@ -134,7 +134,7 @@ const ogSvg = `
 
   <!-- Footer Info Line -->
   <g transform="translate(64, 570)">
-    <text x="0" y="0" fill="#475569" font-size="11" font-family="monospace">HUFLIT UNIVERSITY &#8226; CLASS OF 2026 &#8226; TÂN PHÚ, TP. HỒ CHÍ MINH</text>
+    <text x="0" y="0" fill="#475569" font-size="11" font-family="monospace">HUFLIT UNIVERSITY &#8226; CLASS OF 2027 &#8226; TÂN PHÚ, TP. HỒ CHÍ MINH</text>
     <text x="1072" y="0" fill="#2dd4bf" font-size="11" font-family="monospace" text-anchor="end" font-weight="700">phidanghai-portfolio.vercel.app</text>
   </g>
 </svg>
@@ -168,6 +168,8 @@ const iconSvg = `
 `;
 
 async function generateAll() {
+  const pngToIco = (require('png-to-ico').default || require('png-to-ico'));
+
   // 1. Generate OG Image (1200x630)
   const ogPath = path.join(publicDir, 'og-image.png');
   await sharp(Buffer.from(ogSvg)).png({ quality: 95 }).toFile(ogPath);
@@ -192,10 +194,18 @@ async function generateAll() {
   await sharp(iconBuffer).resize(512, 512).png().toFile(path.join(publicDir, 'icon-512.png'));
   console.log('✅ Generated public/icon-512.png');
 
-  // favicon.ico (32x32)
-  await sharp(iconBuffer).resize(32, 32).png().toFile(path.join(publicDir, 'favicon.ico'));
-  await sharp(iconBuffer).resize(32, 32).png().toFile(path.join(appDir, 'favicon.ico'));
-  console.log('✅ Generated favicon.ico in app/ and public/');
+  // Real multi-res favicon.ico (16, 32, 48)
+  const tmp16 = path.join(publicDir, '_tmp-16.png');
+  const tmp32 = path.join(publicDir, '_tmp-32.png');
+  const tmp48 = path.join(publicDir, '_tmp-48.png');
+  await sharp(iconBuffer).resize(16, 16).png().toFile(tmp16);
+  await sharp(iconBuffer).resize(32, 32).png().toFile(tmp32);
+  await sharp(iconBuffer).resize(48, 48).png().toFile(tmp48);
+  const icoBuffer = await pngToIco([tmp16, tmp32, tmp48]);
+  fs.unlinkSync(tmp16); fs.unlinkSync(tmp32); fs.unlinkSync(tmp48);
+  fs.writeFileSync(path.join(publicDir, 'favicon.ico'), icoBuffer);
+  fs.writeFileSync(path.join(appDir, 'favicon.ico'), icoBuffer);
+  console.log('✅ Generated real multi-res favicon.ico (16x16, 32x32, 48x48) in app/ and public/');
 }
 
 generateAll().catch(console.error);

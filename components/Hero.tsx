@@ -85,7 +85,7 @@ export default function Hero() {
           </div>
           <span className="text-xs text-slate-400 font-mono flex items-center gap-1.5 border border-white/[0.06] bg-white/[0.02] px-3 py-1.5 rounded-full">
             <Terminal size={12} className="text-teal-400" />
-            <span>HUFLIT &middot; Class of 2026</span>
+            <span>HUFLIT &middot; Class of 2027</span>
           </span>
         </motion.div>
 
